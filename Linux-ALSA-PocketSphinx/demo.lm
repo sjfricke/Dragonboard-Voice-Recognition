@@ -1,0 +1,116 @@
+Language model created by QuickLM on Mon Jan  1 23:37:33 EST 2018
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 16 sentences and 25 words
+
+\data\
+ngram 1=25
+ngram 2=40
+ngram 3=28
+
+\1-grams:
+-0.8822 </s> -0.3010
+-0.8822 <s> -0.2400
+-2.0864 BLUE -0.2400
+-2.0864 CAN -0.2975
+-2.0864 COLOR -0.2400
+-2.0864 DAY -0.2902
+-2.0864 FRIDAY -0.2400
+-2.0864 GREEN -0.2400
+-2.0864 HELP -0.2975
+-1.6092 IS -0.2902
+-1.7853 IT -0.2400
+-2.0864 ME -0.2400
+-2.0864 MONDAY -0.2400
+-2.0864 MY -0.2975
+-2.0864 NAME -0.2400
+-2.0864 RED -0.2400
+-2.0864 SATURDAY -0.2400
+-2.0864 SUNDAY -0.2400
+-2.0864 THURSDAY -0.2400
+-2.0864 TIME -0.2902
+-2.0864 TUESDAY -0.2400
+-2.0864 WEDNESDAY -0.2400
+-1.4843 WHAT -0.2791
+-2.0864 YELLOW -0.2400
+-2.0864 YOU -0.2975
+
+\2-grams:
+-1.5051 <s> BLUE 0.0000
+-1.5051 <s> CAN 0.0000
+-1.5051 <s> FRIDAY 0.0000
+-1.5051 <s> GREEN 0.0000
+-1.5051 <s> MONDAY 0.0000
+-1.5051 <s> RED 0.0000
+-1.5051 <s> SATURDAY 0.0000
+-1.5051 <s> SUNDAY 0.0000
+-1.5051 <s> THURSDAY 0.0000
+-1.5051 <s> TUESDAY 0.0000
+-1.5051 <s> WEDNESDAY 0.0000
+-0.9031 <s> WHAT 0.0000
+-1.5051 <s> YELLOW 0.0000
+-0.3010 BLUE </s> -0.3010
+-0.3010 CAN YOU 0.0000
+-0.3010 COLOR </s> -0.3010
+-0.3010 DAY IS -0.1249
+-0.3010 FRIDAY </s> -0.3010
+-0.3010 GREEN </s> -0.3010
+-0.3010 HELP ME 0.0000
+-0.4771 IS IT 0.0000
+-0.7782 IS MY 0.0000
+-0.3010 IT </s> -0.3010
+-0.3010 ME </s> -0.3010
+-0.3010 MONDAY </s> -0.3010
+-0.3010 MY NAME 0.0000
+-0.3010 NAME </s> -0.3010
+-0.3010 RED </s> -0.3010
+-0.3010 SATURDAY </s> -0.3010
+-0.3010 SUNDAY </s> -0.3010
+-0.3010 THURSDAY </s> -0.3010
+-0.3010 TIME IS -0.1249
+-0.3010 TUESDAY </s> -0.3010
+-0.3010 WEDNESDAY </s> -0.3010
+-0.9031 WHAT COLOR 0.0000
+-0.9031 WHAT DAY 0.0000
+-0.9031 WHAT IS -0.2218
+-0.9031 WHAT TIME 0.0000
+-0.3010 YELLOW </s> -0.3010
+-0.3010 YOU HELP 0.0000
+
+\3-grams:
+-0.3010 <s> BLUE </s>
+-0.3010 <s> CAN YOU
+-0.3010 <s> FRIDAY </s>
+-0.3010 <s> GREEN </s>
+-0.3010 <s> MONDAY </s>
+-0.3010 <s> RED </s>
+-0.3010 <s> SATURDAY </s>
+-0.3010 <s> SUNDAY </s>
+-0.3010 <s> THURSDAY </s>
+-0.3010 <s> TUESDAY </s>
+-0.3010 <s> WEDNESDAY </s>
+-0.9031 <s> WHAT COLOR
+-0.9031 <s> WHAT DAY
+-0.9031 <s> WHAT IS
+-0.9031 <s> WHAT TIME
+-0.3010 <s> YELLOW </s>
+-0.3010 CAN YOU HELP
+-0.3010 DAY IS IT
+-0.3010 HELP ME </s>
+-0.3010 IS IT </s>
+-0.3010 IS MY NAME
+-0.3010 MY NAME </s>
+-0.3010 TIME IS IT
+-0.3010 WHAT COLOR </s>
+-0.3010 WHAT DAY IS
+-0.3010 WHAT IS MY
+-0.3010 WHAT TIME IS
+-0.3010 YOU HELP ME
+
+\end\
