@@ -14,3 +14,14 @@ red
 green
 blue
 yellow
+what number
+zero
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
