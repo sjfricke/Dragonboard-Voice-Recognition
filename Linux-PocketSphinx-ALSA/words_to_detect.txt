@@ -1,0 +1,16 @@
+what time is it
+what is my name
+can you help me
+what day is it
+Monday
+Tuesday
+wednesday
+Thursday
+Friday
+Saturday
+Sunday
+what color
+red
+green
+blue
+yellow
