@@ -1,5 +1,7 @@
 # Executables by name
 basic
+add
+thread
 
 # Prerequisites
 *.d
