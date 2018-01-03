@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
+#include <pthread.h>
 
 #include <sphinxbase/err.h>
 #include <sphinxbase/ad.h>
@@ -15,6 +17,9 @@ int32_t n_samples;
 uint8_t utt_started = 0;
 uint8_t in_speech;
 char const* phrase;
+
+// just used for this example to know when thread is done
+int thread_done = 0;
 
 void DictionarySetup() {
 
@@ -38,36 +43,38 @@ void DictionarySetup() {
   }
 }
 
-void GetPhrase() {
+void* GetPhrase( void *arg ) {
 
   // plughw:0,2 is capture on dragonbaord by default
   if ((ad = ad_open_dev("plughw:0,2", 16000)) == NULL) {
     fprintf(stderr, "Failed to open audio device\n");
+    fflush(stderr);
     exit(-1);
   }
 
   // start recording
   if (ad_start_rec(ad) < 0) {
     fprintf(stderr, "Failed to start recording\n");
-    return;
+    fflush(stderr);
+    exit(-1);
   }
 
   // start utterance
   if (ps_start_utt(ps) < 0) {
     fprintf(stderr, "Failed to start utterance\n");
-    return;
+    fflush(stderr);
+    exit(-1);
   }
-
-  printf("\nSay your phrase...\n\n");
-  
+ 
   // Loop until word is fetched
   while(1) {
     
     // Start getting data
     if ((n_samples = ad_read(ad, buffer, PS_BUF_SIZE)) < 0) {
       fprintf(stderr, "Failed to read audio\n");
-      ad_close(ad);
-      return;
+      ad_close(ad);      
+      fflush(stderr);
+      exit(-1);
     }
 
     ps_process_raw(ps, buffer, n_samples, FALSE, FALSE);
@@ -83,18 +90,21 @@ void GetPhrase() {
 
       if (phrase != NULL) {
 	ad_close(ad);
-	printf("\nYou Said: %s\n\n", phrase);
-	return;
+	thread_done = 1;
+	pthread_exit(NULL);
+	return NULL;
       } else {
 	fprintf(stderr, "Phrase was null\n");
-	ad_close(ad);
-	return;
+	ad_close(ad);	
+	fflush(stderr);
+	exit(-1);
       }
 
       if (ps_start_utt(ps) < 0) {
 	fprintf(stderr, "Failed to start utterance\n");
 	ad_close(ad);
-	return;
+	fflush(stderr);
+	exit(-1);
       }
     }
   } // while(1)
@@ -105,11 +115,39 @@ void CleanUp() {
   cmd_ln_free_r(config);
 }
 
+// used to keep main thread busy
+void HeavyCalculations() {
+
+  float accumulator;
+  float i;
+  float big = 10000000.0f;
+  
+  while( thread_done == 0 ) {
+
+    for (i = 0.0f; i < big; i++) {
+     accumulator += i / (big - i);
+    }
+
+    big += 1000.0f;
+    
+    printf("Accumulator: %.6f\n", accumulator);
+  }
+}
+
 int main(int argc, char* argv[]) {
+
+  pthread_t voice_thread;
+  char* thread_arg = "empty";
   
   DictionarySetup();
 
-  GetPhrase();
+  pthread_create( &voice_thread, NULL, GetPhrase, (void*) thread_arg);
+
+  printf("\nSay your phrase...\n\n");
+  
+  HeavyCalculations();
+
+  printf("\nWhat you said: %s\n\n", phrase);
   
   CleanUp();
 }

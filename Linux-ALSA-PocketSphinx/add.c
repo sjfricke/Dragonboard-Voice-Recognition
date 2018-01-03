@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <stdint.h>
 #include <string.h>
 
 #include <sphinxbase/err.h>
@@ -105,8 +104,7 @@ void GetPhrase() {
   } // while(1)
 }
 
-void CleanUp()
-{
+void CleanUp() {
   ps_free(ps);
   cmd_ln_free_r(config);
 }
